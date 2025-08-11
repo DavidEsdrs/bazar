@@ -1,5 +1,6 @@
 package com.davidesdras.bazar.model.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class Lote {
   private List<Produto> doacoes;
 
   public Lote() {
+    doacoes = new ArrayList<>();
   }
 
   public Lote(int id, Date dataEntrega, String observacao, OrgaoFiscalizador fiscalizador, OrgaoDonatario donatario,

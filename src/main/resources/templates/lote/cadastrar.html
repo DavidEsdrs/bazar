@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastrar Lote</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+
+<body class="bg-light">
+  <div class="container py-4">
+    <div class="card mb-4">
+      <div class="card-header">
+        <h2 class="mb-0">Cadastrar Lote</h2>
+      </div>
+      <div class="card-body">
+        <form th:action="@{/lote/cadastrar}" method="post" class="row g-3">
+          <div class="col-md-4">
+            <label for="dataEntrega" class="form-label">Data de Entrega</label>
+            <input type="date" id="dataEntrega" name="dataEntrega" class="form-control" required>
+          </div>
+          <div class="col-md-8">
+            <label for="observacao" class="form-label">Observação</label>
+            <input type="text" id="observacao" name="observacao" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label for="fiscalizadorId" class="form-label">Fiscalizador</label>
+            <select name="fiscalizadorId" id="fiscalizadorId" class="form-select" required>
+              <option value="">Selecione um fiscalizador</option>
+              <option th:each="fiscalizador : ${fiscalizadores}" th:value="${fiscalizador.id}" th:text="${fiscalizador.nome}"></option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="orgaoDonatarioId" class="form-label">Donatário</label>
+            <select name="donatarioId" id="orgaoDonatarioId" class=" form-select" required>
+              <option value="">Selecione um donatário</option>
+              <option th:each="donatario : ${donatarios}" th:value="${donatario.id}" th:text="${donatario.nome}">
+              </option>
+            </select>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Produtos do Lote</label>
+            <div id="produtos-lista"></div>
+            <button type="button" class="btn btn-outline-primary btn-sm mt-2" onclick="adicionarProduto()">Adicionar
+              Produto</button>
+          </div>
+          <div class="col-12 d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <a th:href="@{/lote/todos}" class="btn btn-secondary">Voltar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/lote-produtos.js"></script>
+</body>
+
+</html>

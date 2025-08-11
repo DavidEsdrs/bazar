@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Órgão Donatário</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container py-4">
+    <div class="card mb-4">
+      <div class="card-header">
+        <h2 class="mb-0">Cadastrar Órgão Donatário</h2>
+      </div>
+      <div class="card-body">
+        <form th:action="@{/orgao-donatario/cadastrar}" method="post" class="row g-3">
+          <div class="col-md-8">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" id="nome" name="nome" class="form-control">
+          </div>
+          <div class="col-md-8">
+            <label for="endereco" class="form-label">Endereço</label>
+            <input type="text" id="endereco" name="endereco" class="form-control">
+          </div>
+          <div class="col-md-8">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="text" id="telefone" name="telefone" class="form-control">
+          </div>
+          <div class="col-md-8">
+            <label for="horarioFuncionamento" class="form-label">Horário Funcionamento</label>
+            <input type="text" id="horarioFuncionamento" name="horarioFuncionamento" class="form-control">
+          </div>
+          <div class="col-md-8">
+            <label for="descricao" class="form-label">Descrição</label>
+            <input type="text" id="descricao" name="descricao" class="form-control">
+          </div>
+          <div class="col-12 d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <a th:href="@{/orgao-donatario/todos}" class="btn btn-secondary">Voltar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

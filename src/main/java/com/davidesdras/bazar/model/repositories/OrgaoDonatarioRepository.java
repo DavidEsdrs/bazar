@@ -12,22 +12,21 @@ public final class OrgaoDonatarioRepository implements Repository<Integer, Orgao
 
   @Override
   public void create(OrgaoDonatario c) throws ClassNotFoundException, SQLException {
-    String sql = "insert into orgaodonatario(id,nome,endereco,telefone,horario_funcionamento,descricao) values (?,?,?,?,?,?)";
+    String sql = "insert into orgaodonatario(nome,endereco,telefone,horariofuncionamento,descricao) values (?,?,?,?,?)";
     PreparedStatement pstmt = ConnectionManager.getCurrentConnection().prepareStatement(sql);
 
-    pstmt.setInt(1, c.getId());
-    pstmt.setString(2, c.getNome());
-    pstmt.setString(3, c.getEndereco());
-    pstmt.setString(4, c.getTelefone());
-    pstmt.setString(5, c.getHorarioFuncionamento());
-    pstmt.setString(6, c.getDescricao());
+    pstmt.setString(1, c.getNome());
+    pstmt.setString(2, c.getEndereco());
+    pstmt.setString(3, c.getTelefone());
+    pstmt.setString(4, c.getHorarioFuncionamento());
+    pstmt.setString(5, c.getDescricao());
 
     pstmt.execute();
   }
 
   @Override
   public void update(OrgaoDonatario c) throws ClassNotFoundException, SQLException {
-    String sql = "update orgaodonatario set nome = ?, endereco = ?, telefone = ?, horario_funcionamento = ?, descricao = ? where id = ?";
+    String sql = "update orgaodonatario set nome = ?, endereco = ?, telefone = ?, horariofuncionamento = ?, descricao = ? where id = ?";
     PreparedStatement pstmt = ConnectionManager.getCurrentConnection().prepareStatement(sql);
 
     pstmt.setString(1, c.getNome());
@@ -56,7 +55,7 @@ public final class OrgaoDonatarioRepository implements Repository<Integer, Orgao
       o.setNome(result.getString("nome"));
       o.setEndereco(result.getString("endereco"));
       o.setTelefone(result.getString("telefone"));
-      o.setHorarioFuncionamento(result.getString("horario_funcionamento"));
+      o.setHorarioFuncionamento(result.getString("horariofuncionamento"));
       o.setDescricao(result.getString("descricao"));
 
     }
@@ -91,7 +90,7 @@ public final class OrgaoDonatarioRepository implements Repository<Integer, Orgao
       o.setNome(result.getString("nome"));
       o.setEndereco(result.getString("endereco"));
       o.setTelefone(result.getString("telefone"));
-      o.setHorarioFuncionamento(result.getString("horario_funcionamento"));
+      o.setHorarioFuncionamento(result.getString("horariofuncionamento"));
       o.setDescricao(result.getString("descricao"));
 
       orgaos.add(o);

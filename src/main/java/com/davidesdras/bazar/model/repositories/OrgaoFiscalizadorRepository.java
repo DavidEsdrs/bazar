@@ -11,12 +11,11 @@ import com.davidesdras.bazar.model.entities.OrgaoFiscalizador;
 public final class OrgaoFiscalizadorRepository implements Repository<Integer, OrgaoFiscalizador> {
   @Override
   public void create(OrgaoFiscalizador c) throws ClassNotFoundException, SQLException {
-    String sql = "insert into orgaofiscalizador(id, nome, descricao) values (?, ?, ?)";
+    String sql = "insert into orgaofiscalizador(nome, descricao) values (?, ?)";
     PreparedStatement pstmt = ConnectionManager.getCurrentConnection().prepareStatement(sql);
 
-    pstmt.setInt(1, c.getId());
-    pstmt.setString(2, c.getNome());
-    pstmt.setString(3, c.getDescricao());
+    pstmt.setString(1, c.getNome());
+    pstmt.setString(2, c.getDescricao());
 
     pstmt.execute();
   }

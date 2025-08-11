@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bazar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+  <div class="container py-4">
+    <h2 class="mb-4">Órgãos Donatários</h2>
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5 class="mb-0">Ações</h5>
+      </div>
+      <div class="card-body">
+        <a th:href="@{/orgao-donatario/cadastrar}" class="btn btn-primary">Criar</a>
+      </div>
+    </div>
+    <div th:if="${session.donatarios.size()} > 0" class="card">
+      <div class="card-header">
+        <h5 class="mb-0">Lista de Órgãos Donatários</h5>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-striped mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Endereço</th>
+              <th>Telefone</th>
+              <th>Horário de Funcionamento</th>
+              <th>Descrição</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="donatario : ${session.donatarios}">
+              <td th:text="${donatario.id}"></td>
+              <td th:text="${donatario.nome}"></td>
+              <td th:text="${donatario.endereco}"></td>
+              <td th:text="${donatario.telefone}"></td>
+              <td th:text="${donatario.horarioFuncionamento}"></td>
+              <td th:text="${donatario.descricao}"></td>
+              <td>
+                <a th:href="@{/orgao-donatario/{id}(id=${donatario.id})}" class="btn btn-sm btn-outline-secondary">Detalhar</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div th:if="${session.donatarios.size()} == 0" class="alert alert-info text-center mt-4" role="alert">
+      Nenhum órgão donatário encontrado.
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

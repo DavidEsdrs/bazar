@@ -4,14 +4,16 @@ public class Produto {
   private int codigo;
   private String nome;
   private String descricao;
+  private Lote lote;
 
   public Produto() {
   }
 
-  public Produto(int codigo, String nome, String descricao) {
+  public Produto(int codigo, String nome, String descricao, Lote lote) {
     this.codigo = codigo;
     this.nome = nome;
     this.descricao = descricao;
+    this.lote = lote;
   }
 
   public int getCodigo() {
@@ -36,6 +38,14 @@ public class Produto {
 
   public void setDescricao(String descricao) {
     this.descricao = descricao;
+  }
+
+  public Lote getLote() {
+    return this.lote;
+  }
+
+  public void setLote(Lote lote) {
+    this.lote = lote;
   }
 
 }
